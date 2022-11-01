@@ -4,8 +4,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <meta charset="UTF-8">
-    <title>Title</title>
-  <style>
+
+    <title>김갑신-상세페이지</title>
+    <style>
     #head {
     display: flex;
       flex-direction: column;
@@ -75,18 +76,20 @@
 
  }
 
-  </style>
+
+
+    </style>
     <script>
-         $(document).ready(function () {
-            show_order();
+         $(document).ready(function() {
+            show_order()
         });
         function show_order() {
             $.ajax({
                 type: 'GET',
-                url: '/comment',
+                url: '/comment1',
                 data: {},
                 success: function (response) {
-                    let rows =response['orders']
+                    let rows =response['name']
                     for (let i = 0; i<rows.length; i++){
                         let name = rows[i]['name']
                         let com = rows[i]['com']
@@ -106,86 +109,95 @@
 
 
         function save_order(){
-            let name = $('.name').val()
-            let com = $('.dis').val()
+            let name = $('#name1').val()
+            let comment = $('#comment1').val()
             $.ajax({
                 type: 'POST',
-                url: '/comment',
-                data: {name_give:name,com_give:com},
+                url: '/comment1',
+                data: {name_give:name,comment_give:comment},
                 success: function (response) {
                     alert(response['msg'])
                     window.location.reload()
                 }
             });
         }
+
+
     </script>
 </head>
 <body>
 <!--배너-->
- <div id="head">
+<div id="head">
     <h1>나의 상세정보</h1>
-  </div>
+</div>
 <!--사진-->
-<div >
-  <img id="pic" src="https://ca.slack-edge.com/T043597JK8V-U047GAAAXGQ-4433c813fba5-512"  alt="...">
+<div>
+    <img id="pic" src="https://ca.slack-edge.com/T043597JK8V-U047GAAAXGQ-4433c813fba5-512" alt="...">
 </div>
 <!--장단점, 자기소개칸-->
-<div id="pr" >
-  <table class="table" >
-    <tr>
-      <td><h2>이름</h2></td>
-      <td>김갑신</td>
-    </tr>
-    <tr>
-      <td><h2>자신 설명</h2></td>
-      <td>나는 감자</td>
-    </tr>
-    <tr>
-      <td><h2>MBTI</h2></td>
-      <td>ENTJ</td>
-    </tr>
-    <tr>
-      <td><h2>장점</h2></td>
-      <td>ENTJ</td>
-    </tr>
-    <tr>
-      <td><h2>협업 스타일</h2></td>
-      <td>ENTJ</td>
-    </tr>
-    <tr>
-      <td><h2>블로그 주소</h2></td>
-      <td>벨로그</td>
-    </tr>
-   </table>
+<div id="pr">
+    <table class="table">
+        <tr>
+            <td><h2>이름</h2></td>
+            <td>김갑신</td>
+        </tr>
+        <tr>
+            <td><h2>자신 설명</h2></td>
+            <td><p>우선 저의 mbti는 intj입니다. 그리고 저에대한 설명을 드리자면
+                mbti에 j가 포함되어 있는 만큼 중요한 일을 할때에는 사전에 계획을
+                세우는 것을 선호 합니다.</p> 그리고 계획대로 일이 착착 진행될때는 뿌듯함을 많이 느낌니다.
+                그리고 애완동물도 1마리 기르고 있는데 이름이 수리 라는 2살짜리 고양이 한마리 기르고 있습니다!
+            </td>
+        </tr>
+        <tr>
+            <td><h2>MBTI</h2></td>
+            <td>INTJ</td>
+        </tr>
+        <tr>
+            <td><h2>장점</h2></td>
+            <td>저의 장점은 침착함 입니다. 자세히 이야기 해 드리자면 어떤 상황이 와도 당황하고 허둥지둥 하는 것이아니라
+                마인드 컨트롤을 해서 침착하게 저의 역량을 온전히 발휘할 수 있습니다. 그것이 저의 큰 장점입니다~
+            </td>
+        </tr>
+        <tr>
+            <td><h2>협업 스타일</h2></td>
+            <td><p>제가 선호하는 협업스타일은 우선 팀원과 함께 달성해야할 목표를 정하고 목표를 달성하기 위한 계획과</p>
+                <p>역할분담을 먼저 한다음에 협업을 하는것 입니다. 이렇게 해야 보다 효율적으로 확실하게 협업을 완성할 수 있다고</p>
+                생각하기 때문입니다. 물론 그 과정에서 팀원들과 충분한 소통을 통해서 의견을 조율해야 하는것은 당연히 해야하는 것이구요
+            </td>
+        </tr>
+        <tr>
+            <td><h2>블로그 주소</h2></td>
+            <td>https://velog.io/@ost126</td>
+        </tr>
+    </table>
 </div>
 <!--방명록-->
 <div class="mypost">
-<div class="form-floating mb-3">
-  <input type="" class="name" id="floatingInput" placeholder="이름">
-  <label for="floatingInput"></label>
-</div>
-  <div class="form-floating">
-  <textarea class="dis" placeholder="응원댓글" id="floatingTextarea2" style="height: 100px"></textarea>
-  <label for="floatingTextarea2"></label>
-    <button onclick="save_order()" type="button" class="btn btn-secondary">댓글 남기기</button>
-</div>
+    <div class="form-floating mb-3">
+        <input type="text" class="name" id="name1" placeholder="이름">
+        <label for="name1"></label>
+    </div>
+    <div class="form-floating">
+        <textarea class="dis" placeholder="응원댓글" id="comment1" style="height: 100px"></textarea>
+        <label for="comment1"></label>
+        <button onclick="save_order()" type="button" class="btn btn-secondary">댓글 남기기</button>
+    </div>
 </div>
 <div class="comments">
     <table class="bang">
-            <thead>
-              <tr class="mit">
-                <th class="line" scope="col">이름</th>
-                <th class="line" scope="col">방명록</th>
-              </tr>
-            </thead>
+        <thead>
+        <tr class="mit">
+            <th class="line" scope="col">이름</th>
+            <th class="line" scope="col">방명록</th>
+        </tr>
+        </thead>
 
-            <tbody id="box">
+        <tbody id="box">
 
 
-
-            </tbody>
-          </table>
+        </tbody>
+    </table>
 </div>
-
 </body>
 </html>
