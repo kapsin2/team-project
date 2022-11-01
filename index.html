@@ -19,8 +19,17 @@
 
 
         .mypic {
-            color: black;
-            margin-top: 50px;
+             width: 100%;
+            height: 250px;
+
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/101549574_119670533095066_4210742373145116672_n.png?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=gBEUSwED32wAX-3rGcl&_nc_ht=scontent-ssn1-1.xx&oh=00_AfAl0IUr05U_5nYrbY6sjIy4bK6jr0f1ZLay0tQh0j4FQA&oe=638488E0");
+            background-position: center;
+            background-size: cover;
+
+            color: white;
+
+
+            margin-top: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -29,7 +38,7 @@
         }
         .mypic2 {
             color: black;
-            margin-top : 100px;
+            margin-top : 30px;
             margin-bottom:15px;
 
 
@@ -42,10 +51,12 @@
             max-width: 800px;
             width: 95%;
 
-            margin: 20px auto 0px auto;
+            margin: 20px auto 20px auto;
 
             box-shadow: 0px 0px 3px 0px gray;
             padding: 5px;
+
+            box-left-color: red ;
         }
 
         .card{
@@ -57,7 +68,10 @@
             box-shadow: 0px 0px 3px 0px gray;
             padding: 5px;
             margin: 5px;
+
+            border-color: red;
         }
+
 
 
     </style>
@@ -91,43 +105,43 @@
 
 <div class="card-group">
     <div class="card">
-        <img src="https://ca.slack-edge.com/T043597JK8V-U047GAAAXGQ-4433c813fba5-512" class="card-img-top" alt="">
+        <img src="사진" class="card-img-top" alt="사진">
         <div class="card-body">
             <h5 class="card-title">김갑신</h5>
-            <p class="card-text">8조의 팀장을 맡은 김갑신이라고 합니다!</p>
-            <a href="상세페이지링크!" type="button" class="btn btn-dark">자세히 보기</a>
+            <p class="card-text">간단소개</p>
+            <button onclick="go_link()" type="button" class="btn btn-dark">자세히 보기</button>
         </div>
     </div>
-    <div class="card">
+        <div class="card">
         <img src="사진" class="card-img-top" alt="사진">
         <div class="card-body">
-            <h5 class="card-title">이름</h5>
+            <h5 class="card-title">남궁준</h5>
             <p class="card-text">간단소개</p>
-            <a href="상세페이지링크!" type="button" class="btn btn-dark">자세히 보기</a>
+            <button onclick="go_link()" type="button" class="btn btn-dark">자세히 보기</button>
         </div>
     </div>
-    <div class="card">
+        <div class="card">
         <img src="사진" class="card-img-top" alt="사진">
         <div class="card-body">
-            <h5 class="card-title">이름</h5>
+            <h5 class="card-title">장지예</h5>
             <p class="card-text">간단소개</p>
-            <a href="상세페이지링크!" type="button" class="btn btn-dark">자세히 보기</a>
+            <button onclick="go_link()" type="button" class="btn btn-dark">자세히 보기</button>
         </div>
     </div>
-    <div class="card">
+        <div class="card">
         <img src="사진" class="card-img-top" alt="사진">
         <div class="card-body">
-            <h5 class="card-title">이름</h5>
+            <h5 class="card-title">장현재</h5>
             <p class="card-text">간단소개</p>
-            <a href="상세페이지링크!" type="button" class="btn btn-dark">자세히 보기</a>
+            <button onclick="go_link()" type="button" class="btn btn-dark">자세히 보기</button>
         </div>
     </div>
-    <div class="card">
+        <div class="card">
         <img src="사진" class="card-img-top" alt="사진">
         <div class="card-body">
-            <h5 class="card-title">이름</h5>
+            <h5 class="card-title">박동근</h5>
             <p class="card-text">간단소개</p>
-            <a href="상세페이지링크!" type="button" class="btn btn-dark">자세히 보기</a>
+            <button onclick="go_link()" type="button" class="btn btn-dark">자세히 보기</button>
         </div>
     </div>
 </div>
