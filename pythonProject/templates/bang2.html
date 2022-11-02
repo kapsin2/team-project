@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <title>Title</title>
-  <style>
+    <style>
     #head {
     display: flex;
       flex-direction: column;
@@ -75,26 +75,27 @@
 
  }
 
-  </style>
+
+    </style>
     <script>
-         $(document).ready(function () {
+     $(document).ready(function() {
             show_order();
         });
         function show_order() {
             $.ajax({
                 type: 'GET',
-                url: '/comment',
+                url: '/comment2',
                 data: {},
                 success: function (response) {
-                    let rows =response['orders']
+                    let rows =response['comments']
                     for (let i = 0; i<rows.length; i++){
                         let name = rows[i]['name']
-                        let com = rows[i]['com']
+                        let comment = rows[i]['comment']
 
                         let temp_html = `
                                       <tr>
-                                      <td>${name}</td>
-                                      <td>${com}</td>
+                                        <th class="line" scope="col">${name}</th>
+                                        <th class="line" scope="col">${comment}</th>
                                       </tr>
                                       `
                         $('#box').append(temp_html)
@@ -106,85 +107,85 @@
 
 
         function save_order(){
-            let name = $('.name').val()
-            let com = $('.dis').val()
+            let name = $('#name2').val()
+            let comment = $('#comment2').val()
             $.ajax({
                 type: 'POST',
-                url: '/comment',
-                data: {name_give:name,com_give:com},
+                url: '/comment2',
+                data: {name_give:name,comment_give:comment},
                 success: function (response) {
                     alert(response['msg'])
                     window.location.reload()
                 }
             });
         }
+
     </script>
 </head>
 <body>
 <!--배너-->
- <div id="head">
+<div id="head">
     <h1>나의 상세정보</h1>
-  </div>
+</div>
 <!--사진-->
-<div >
-  <img id="pic" src="https://ca.slack-edge.com/T043597JK8V-U046B3W6XBR-27a74e8441d8-512"  alt="...">
+<div>
+    <img id="pic" src="https://ca.slack-edge.com/T043597JK8V-U046B3W6XBR-27a74e8441d8-512" alt="...">
 </div>
 <!--장단점, 자기소개칸-->
-<div id="pr" >
-  <table class="table" >
-    <tr>
-      <td><h2>이름</h2></td>
-      <td>남궁준</td>
-    </tr>
-    <tr>
-      <td><h2>자신 설명</h2></td>
-      <td>나는 감자</td>
-    </tr>
-    <tr>
-      <td><h2>MBTI</h2></td>
-      <td>ENTJ</td>
-    </tr>
-    <tr>
-      <td><h2>장점</h2></td>
-      <td>ENTJ</td>
-    </tr>
-    <tr>
-      <td><h2>협업 스타일</h2></td>
-      <td>ENTJ</td>
-    </tr>
-    <tr>
-      <td><h2>블로그 주소</h2></td>
-      <td>벨로그</td>
-    </tr>
-   </table>
+<div id="pr">
+    <table class="table">
+        <tr>
+            <td><h2>이름</h2></td>
+            <td>남궁준</td>
+        </tr>
+        <tr>
+            <td><h2>자신 설명</h2></td>
+            <td>나는 감자</td>
+        </tr>
+        <tr>
+            <td><h2>MBTI</h2></td>
+            <td>ENTJ</td>
+        </tr>
+        <tr>
+            <td><h2>장점</h2></td>
+            <td>ENTJ</td>
+        </tr>
+        <tr>
+            <td><h2>협업 스타일</h2></td>
+            <td>ENTJ</td>
+        </tr>
+        <tr>
+            <td><h2>블로그 주소</h2></td>
+            <td>벨로그</td>
+        </tr>
+    </table>
 </div>
 <!--방명록-->
 <div class="mypost">
-<div class="form-floating mb-3">
-  <input type="" class="name" id="floatingInput" placeholder="이름">
-  <label for="floatingInput"></label>
-</div>
-  <div class="form-floating">
-  <textarea class="dis" placeholder="응원댓글" id="floatingTextarea2" style="height: 100px"></textarea>
-  <label for="floatingTextarea2"></label>
-    <button onclick="save_order()" type="button" class="btn btn-secondary">댓글 남기기</button>
-</div>
+    <div class="form-floating mb-3">
+        <input type="text" class="name" id="name2" placeholder="이름">
+        <label for="name2"></label>
+    </div>
+    <div class="form-floating">
+        <textarea class="dis" placeholder="응원댓글" id="comment2" style="height: 100px"></textarea>
+        <label for="comment2"></label>
+        <button onclick="save_order()" type="button" class="btn btn-secondary">댓글 남기기</button>
+    </div>
 </div>
 <div class="comments">
     <table class="bang">
-            <thead>
-              <tr class="mit">
-                <th class="line" scope="col">이름</th>
-                <th class="line" scope="col">방명록</th>
-              </tr>
-            </thead>
+        <thead>
+        <tr class="mit">
+            <th class="line" scope="col">이름</th>
+            <th class="line" scope="col">방명록</th>
+        </tr>
+        </thead>
 
-            <tbody id="box">
+        <tbody id="box">
 
 
-
-            </tbody>
-          </table>
+        </tbody>
+    </table>
 </div>
 
 </body>

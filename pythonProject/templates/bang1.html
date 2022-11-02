@@ -78,10 +78,11 @@
 
 
 
+
     </style>
     <script>
          $(document).ready(function() {
-            show_order()
+            show_order();
         });
         function show_order() {
             $.ajax({
@@ -89,15 +90,15 @@
                 url: '/comment1',
                 data: {},
                 success: function (response) {
-                    let rows =response['name']
+                    let rows =response['comments']
                     for (let i = 0; i<rows.length; i++){
                         let name = rows[i]['name']
-                        let com = rows[i]['com']
+                        let comment = rows[i]['comment']
 
                         let temp_html = `
                                       <tr>
-                                      <td>${name}</td>
-                                      <td>${com}</td>
+                                        <th class="line" scope="col">${name}</th>
+                                        <th class="line" scope="col">${comment}</th>
                                       </tr>
                                       `
                         $('#box').append(temp_html)
@@ -121,7 +122,6 @@
                 }
             });
         }
-
 
     </script>
 </head>
