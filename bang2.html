@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    #head {
+    display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #ff7088;
+
+
+   }
+    #pic{
+      width: 300px;
+      height: 300px;
+      margin: 20px 30px ;
+      float: left;
+    }
+    #pr{
+      background-color: #fFB9B9;
+
+    }
+    .table{
+      border: 10px;
+    }
+
+     .mypost {
+
+            max-width: 70%;
+            margin: 20px auto 20px auto;
+
+            box-shadow: 0px 0px 3px 0px black;
+            padding: 20px;
+        }
+
+    .mypost > button {
+        margin-top: 15px;
+    }
+
+    .dis {
+        width: 70%;
+        height: auto;
+    }
+    .name {
+        width: 200px;
+        height: 50px;
+ }
+
+.bang {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+ }
+
+.line {
+        padding: 8px;
+        padding-right: 200px;
+ }
+
+    .comments > tr {
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+        border-bottom: 1px solid;
+    }
+ #box{
+
+ }
+
+
+    </style>
+    <script>
+     $(document).ready(function() {
+            show_order();
+        });
+        function show_order() {
+            $.ajax({
+                type: 'GET',
+                url: '/comment2',
+                data: {},
+                success: function (response) {
+                    let rows =response['comments']
+                    for (let i = 0; i<rows.length; i++){
+                        let name = rows[i]['name']
+                        let comment = rows[i]['comment']
+
+                        let temp_html = `
+                                      <tr>
+                                        <th class="line" scope="col">${name}</th>
+                                        <th class="line" scope="col">${comment}</th>
+                                      </tr>
+                                      `
+                        $('#box').append(temp_html)
+
+                    }
+                }
+            });
+        }
+
+
+        function save_order(){
+            let name = $('#name2').val()
+            let comment = $('#comment2').val()
+            $.ajax({
+                type: 'POST',
+                url: '/comment2',
+                data: {name_give:name,comment_give:comment},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+<!--배너-->
+<div id="head">
+    <h1>나의 상세정보</h1>
+</div>
+<!--사진-->
+<div>
+    <img id="pic" src="https://ca.slack-edge.com/T043597JK8V-U046B3W6XBR-27a74e8441d8-512" alt="...">
+</div>
+<!--장단점, 자기소개칸-->
+<div id="pr">
+    <table class="table">
+        <tr>
+            <td><h2>이름</h2></td>
+            <td>남궁준</td>
+        </tr>
+        <tr>
+            <td><h2>자신 설명</h2></td>
+            <td>로봇처럼 딱딱하고 감정표현이 적지만, 데이터가 쌓이면 가벼운 농담을 주고 받을 정도의 인공지능으로 진화합니다.</td>
+        </tr>
+        <tr>
+            <td><h2>MBTI</h2></td>
+            <td>INFP</td>
+        </tr>
+        <tr>
+            <td><h2>장점</h2></td>
+            <td>어떤 일이든 신중하고 꼼꼼하게 대처합니다.</td>
+        </tr>
+        <tr>
+            <td><h2>협업 스타일</h2></td>
+            <td>주로 리드하는 편은 아니지만, 주어진 역할에 최선을 다합니다.</td>
+        </tr>
+        <tr>
+            <td><h2>블로그 주소</h2></td>
+            <td>https://velog.io/@canu1741</td>
+        </tr>
+    </table>
+</div>
+<!--방명록-->
+<div class="mypost">
+    <div class="form-floating mb-3">
+        <input type="text" class="name" id="name2" placeholder="이름">
+        <label for="name2"></label>
+    </div>
+    <div class="form-floating">
+        <textarea class="dis" placeholder="응원댓글" id="comment2" style="height: 100px"></textarea>
+        <label for="comment2"></label>
+        <button onclick="save_order()" type="button" class="btn btn-secondary">댓글 남기기</button>
+    </div>
+</div>
+<div class="comments">
+    <table class="bang">
+        <thead>
+        <tr class="mit">
+            <th class="line" scope="col">이름</th>
+            <th class="line" scope="col">방명록</th>
+        </tr>
+        </thead>
+
+        <tbody id="box">
+
+
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
