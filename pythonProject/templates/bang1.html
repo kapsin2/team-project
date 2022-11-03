@@ -31,12 +31,19 @@
     }
 
      .mypost {
-
             max-width: 70%;
             margin: 20px auto 20px auto;
 
             box-shadow: 0px 0px 3px 0px black;
             padding: 20px;
+            border-color: inherit;
+            border-style: solid;
+            border-width: 0;
+            border-bottom: 1px solid;
+
+            background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FejRyAQ%2FbtrP99yMMpe%2FBTuSiaTllYC0hKSub8YvgK%2Fimg.png");
+            background-position: center;
+            background-size: cover;
         }
 
     .mypost > button {
@@ -44,40 +51,50 @@
     }
 
     .dis {
-        width: 70%;
+        margin-left : 200px;
+        width: 60%;
         height: auto;
     }
     .name {
-        width: 200px;
+        margin-left : 200px;
+        width: 10%;
         height: 50px;
- }
+     }
 
-.bang {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-
- }
-
-.line {
-        padding: 8px;
-        padding-right: 200px;
- }
-
-    .comments > tr {
-        border-color: inherit;
-        border-style: solid;
-        border-width: 0;
-        border-bottom: 1px solid;
-    }
- #box{
-
- }
+    .bang {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
 
+     }
 
+    .line {
+            padding: 8px;
+            padding-right: 200px;
+     }
+
+        .comments > tr {
+            border-color: inherit;
+            border-style: solid;
+            border-width: 0;
+            border-bottom: 1px solid;
+        }
+        .mycards {
+            width: 95%;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .mycards > .card {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-color: inherit;
+            border-style: solid;
+            border-width: 0;
+            border-bottom: 1px solid;
+        }
 
     </style>
     <script>
@@ -95,13 +112,15 @@
                         let name = rows[i]['name']
                         let comment = rows[i]['comment']
 
-                        let temp_html = `
-                                      <tr>
-                                        <th class="line" scope="col">${name}</th>
-                                        <th class="line" scope="col">${comment}</th>
-                                      </tr>
-                                      `
-                        $('#box').append(temp_html)
+                        let temp_html = `<div class="card">
+                                            <div class="card-body">
+                                                <blockquote class="blockquote mb-0">
+                                                    <p>댓글 : ${comment}</p>
+                                                    <footer class="blockquote-footer">이름 : ${name}</footer>
+                                                </blockquote>
+                                            </div>
+                                        </div>`
+                        $('#comment-list').append(temp_html)
 
                     }
                 }
@@ -122,6 +141,8 @@
                 }
             });
         }
+
+
 
     </script>
 </head>
@@ -184,20 +205,8 @@
         <button onclick="save_order()" type="button" class="btn btn-secondary">댓글 남기기</button>
     </div>
 </div>
-<div class="comments">
-    <table class="bang">
-        <thead>
-        <tr class="mit">
-            <th class="line" scope="col">이름</th>
-            <th class="line" scope="col">방명록</th>
-        </tr>
-        </thead>
+<div class="mycards" id="comment-list">
 
-        <tbody id="box">
-
-
-        </tbody>
-    </table>
 </div>
 </body>
 </html>
