@@ -6,89 +6,107 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-    #head {
-    display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #ff7088;
+
+        #head {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color:#ff7088 ;
+            color: white;
 
 
-   }
-    #pic{
-      width: 300px;
-      height: 300px;
-      margin: 20px 30px ;
-      float: left;
-    }
-    #pr{
-      background-color: #fFB9B9;
+        }
 
-    }
-    .table{
-      border: 10px;
-    }
+        #pic {
+            width: 200px;
+            height: 200px;
+            margin: 20px 30px;
+            float: left;
+            border-radius: 10%;
+        }
 
-     .mypost {
+        #pr {
+            background-color: #fFB9B9;
+        }
+
+        .table {
+            word-break: keep-all;
+            border: 10px;
+        }
+
+        .mypost {
 
             max-width: 70%;
             margin: 20px auto 20px auto;
 
-            box-shadow: 0px 0px 3px 0px black;
+            box-shadow: 0px 0px 3px 0px gray;
             padding: 20px;
+
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+
         }
 
-    .mypost > button {
-        margin-top: 15px;
-    }
 
-    .dis {
-        width: 70%;
-        height: auto;
-    }
-    .name {
-        width: 200px;
-        height: 50px;
- }
+        .mypost > button {
+            margin-top: 10px;
+            margin-left: 50px;
+        }
 
-.bang {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        .dis {
+            width: 70%;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .name {
+            width: 200px;
+            height: 40px;
+        }
+
+        .bang {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
 
- }
+        }
 
-.line {
-        padding: 8px;
-        padding-right: 200px;
- }
+        .line {
+            padding: 8px;
+            padding-right: 200px;
+        }
 
-    .comments > tr {
-        border-color: inherit;
-        border-style: solid;
-        border-width: 0;
-        border-bottom: 1px solid;
-    }
- #box{
+        .comments > tr {
+            border-color: inherit;
+            border-style: solid;
+            border-width: 0;
+            border-bottom: 1px solid;
+        }
 
- }
+        #box {
 
+        }
 
     </style>
     <script>
-            $(document).ready(function() {
+        $(document).ready(function () {
             show_order();
         });
+
         function show_order() {
             $.ajax({
                 type: 'GET',
                 url: '/comment3',
                 data: {},
                 success: function (response) {
-                    let rows =response['comments']
-                    for (let i = 0; i<rows.length; i++){
+                    let rows = response['comments']
+                    for (let i = 0; i < rows.length; i++) {
                         let name = rows[i]['name']
                         let comment = rows[i]['comment']
 
@@ -106,13 +124,13 @@
         }
 
 
-        function save_order(){
+        function save_order() {
             let name = $('#name3').val()
             let comment = $('#comment3').val()
             $.ajax({
                 type: 'POST',
                 url: '/comment3',
-                data: {name_give:name,comment_give:comment},
+                data: {name_give: name, comment_give: comment},
                 success: function (response) {
                     alert(response['msg'])
                     window.location.reload()
@@ -128,35 +146,53 @@
     <h1>나의 상세정보</h1>
 </div>
 <!--사진-->
+
 <div>
     <img id="pic" src="https://ca.slack-edge.com/T043597JK8V-U0477PU784Q-e8d14f672ff9-512" alt="...">
 </div>
+
+
 <!--장단점, 자기소개칸-->
 <div id="pr">
     <table class="table">
         <tr>
-            <td><h2>이름</h2></td>
-            <td>장지예</td>
+            <td><h2>이름 </h2></td>
+
+            <td>장지예 <hr/></td>
+            <hr/>
         </tr>
         <tr>
-            <td><h2>자신 설명</h2></td>
-            <td>안녕하세요. 메인페이지1 맡게 되었습니다. 반갑습니다.</td>
+            <td><h2>자신 설명 </h2></td>
+            <td>안녕하세요.코딩에 관심이 생기기 시작하고 공시생활을 탈출해 코딩인생으로 뛰어들었습니다. <hr/></td>
+
         </tr>
         <tr>
-            <td><h2>MBTI</h2></td>
-            <td>INFP</td>
+            <td><h2>MBTI </h2></td>
+            <td> INFP <hr/></td>
         </tr>
         <tr>
-            <td><h2>장점</h2></td>
-            <td>꾸준히 하는 일이 좋아요</td>
+            <td><h2>장점 </h2></td>
+            <td>
+                <p>꾸준히 하는 일이 좋아요.</p>
+                <p>긍정적인 생각을 가지려 합니다. <hr/></p>
+
+
+            </td>
         </tr>
         <tr>
-            <td><h2>협업 스타일</h2></td>
-            <td>모르겠는건 찾아보고 질문하는 편입니다.</td>
+            <td><h2>협업 스타일 </h2></td>
+            <td>
+
+                <p>모르는 부분은 찾아보고 질문하는 편입니다.</p>
+                <p>팀 분위기에 많이 의지합니다.</p>
+                <p>나서서 주목받는 일보다는 서포트 하는걸 더 좋아합니다. <hr/></p>
+                <p>
+
+            </td>
         </tr>
         <tr>
-            <td><h2>블로그 주소</h2></td>
-             <td><a href="https://gyaeh-coding.tistory.com/">블로그링크</a></td>
+            <td><h2>블로그 주소 </h2></td>
+            <td><a href="https://gyaeh-coding.tistory.com/" ><p>개발로그😎<p> </p></a></td>
         </tr>
     </table>
 </div>
